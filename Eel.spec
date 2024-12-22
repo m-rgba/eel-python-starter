@@ -4,7 +4,13 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[("src/web", "web")],
-    hiddenimports=["eel"],
+    hiddenimports=[
+        "eel",
+        "routes",
+        "utils",
+        "functions",
+        "window_manager"
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
