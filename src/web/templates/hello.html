@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Eel Starter{% endblock %}
+{% block head_scripts %}        
+<script type="text/javascript">
+    eel.say_hello_py("Emitted from js: hello");    
+    function whatPage() {
+        console.log("Current page called from python: hello");
+        return "hello";
+    }
+    eel.expose(whatPage);    
+    eel.get_current_page();
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="hello-page">
+    <h1>Hello!</h1>
+    <p>Welcome to the Hello page</p>
+    <button onclick="javascript: window.location = '/world';">Go to World</button>
+</div>
+{% endblock %}

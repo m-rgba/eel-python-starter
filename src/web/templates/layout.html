@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#E74A5F" />
+    <script type="text/javascript" src="/eel.js"></script>
+    <script defer src="/assets/js/alpinejs@3.14.7.min.js"></script>
+    <script src="/assets/js/tailwind@3.4.16.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head_scripts %}{% endblock %}
+    <script>
+        var baseState = () => {
+            return {
+                isMaximized: false,
+                closeWindow() {
+                    eel.close_window();
+                },
+                minimizeWindow() {
+                    eel.minimize_window();
+                },
+                fullscreenWindow() {
+                    eel.fullscreen_window();
+                },
+                maximizeWindow() {
+                    eel.maximize_window();
+                    this.isMaximized = true;
+                },
+                restoreWindow() {
+                    eel.restore_window(window.innerWidth, window.innerHeight);
+                    this.isMaximized = false;
+                }
+            }
+        }
+    </script>
+</head>
+<body x-data="baseState()">
+    <div id="custom-header" class="flex items-center h-[34px] gap-2">
+        <button @click="closeWindow()">Close</button>
+        <button @click="minimizeWindow()">Minimize</button>
+        <button @click="fullscreenWindow()">Fullscreen</button>
+        <button @click="maximizeWindow()" x-show="!isMaximized">Maximize</button>
+        <button @click="restoreWindow()" x-show="isMaximized">Restore</button>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

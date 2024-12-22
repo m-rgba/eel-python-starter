@@ -1,0 +1,9 @@
+services:
+  eel:
+    build: .
+    container_name: eel-python
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src:/src
+    restart: unless-stopped

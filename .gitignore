@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+
+# Distribution/Packaging
+dist/
+build/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
